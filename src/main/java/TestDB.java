@@ -1,3 +1,5 @@
+import org.hibernate.HibernateException;
+
 import java.util.ArrayList;
 
 public class TestDB {
@@ -33,29 +35,33 @@ public class TestDB {
         real.setTrainer(trainer3);
         liverpool.setTrainer(trainer4);
 
+        try {
+            HibernateSupport.beginTransaction();
+            barcelona.saveToDB();
+            city.saveToDB();
+            real.saveToDB();
+            liverpool.saveToDB();
+            HibernateSupport.commitTransaction();
 
-        HibernateSupport.beginTransaction();
-        barcelona.saveToDB();
-        city.saveToDB();
-        real.saveToDB();
-        liverpool.saveToDB();
-        HibernateSupport.commitTransaction();
+            HibernateSupport.beginTransaction();
+            player1.saveToDB();
+            player2.saveToDB();
+            player3.saveToDB();
+            player4.saveToDB();
+            player5.saveToDB();
+            player6.saveToDB();
+            HibernateSupport.commitTransaction();
 
-        HibernateSupport.beginTransaction();
-        player1.saveToDB();
-        player2.saveToDB();
-        player3.saveToDB();
-        player4.saveToDB();
-        player5.saveToDB();
-        player6.saveToDB();
-        HibernateSupport.commitTransaction();
+            HibernateSupport.beginTransaction();
+            trainer1.saveToDB();
+            trainer2.saveToDB();
+            trainer3.saveToDB();
+            trainer3.saveToDB();
+            HibernateSupport.commitTransaction();
 
-        HibernateSupport.beginTransaction();
-        trainer1.saveToDB();
-        trainer2.saveToDB();
-        trainer3.saveToDB();
-        trainer3.saveToDB();
-        HibernateSupport.commitTransaction();
-
+        }catch(HibernateException e){
+            e.printStackTrace();
+            System.err.println("\nNot able to fill all tables with values!\n");
+        }
     }
 }
