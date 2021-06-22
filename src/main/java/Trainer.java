@@ -5,7 +5,7 @@ import javax.persistence.*;
 public class Trainer implements ISaveAndDelete{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "trainer_id", length = 11, nullable = false, unique = true)
+    @Column(name = "trainer_id", length = 11, nullable = false)
     private int trainerId;
     @Column(length = 40)
     private String name;

@@ -7,13 +7,13 @@ import java.util.List;
 public class Team implements ISaveAndDelete{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "team_id", length = 11, nullable = false, unique = true)
+    @Column(name = "team_id", length = 11, nullable = false)
     private int teamId;
     @Column(length = 40)
     private String name;
     @OneToMany
     private List<Player> playerList;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Trainer trainer;
 
 

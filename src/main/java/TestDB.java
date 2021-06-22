@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class TestDB {
 
     public static void main(String[] args) {
+
         Team  real_madrid = new Team("Real Madrid", new ArrayList<>());
         Team  barcelona = new Team("Barcelona", new ArrayList<>());
         Team  manchester_city = new Team("Manchester City", new ArrayList<>());
@@ -19,11 +20,15 @@ public class TestDB {
         Trainer trainer2 = new Trainer("Calvin Klein", manchester_city);
         Trainer trainer3 = new Trainer("Gusto", real_madrid);
 
+        real_madrid.setTrainer(trainer3);
+        barcelona.setTrainer(trainer1);
+        manchester_city.setTrainer(trainer2);
+
+
         HibernateSupport.beginTransaction();
         real_madrid.saveToDB();
         barcelona.saveToDB();
         manchester_city.saveToDB();
-        //problem with this method
         HibernateSupport.commitTransaction();
 
         HibernateSupport.beginTransaction();
