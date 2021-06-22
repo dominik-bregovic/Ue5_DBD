@@ -4,42 +4,56 @@ public class TestDB {
 
     public static void main(String[] args) {
 
-        Team  real_madrid = new Team("Real Madrid", new ArrayList<>());
-        Team  barcelona = new Team("Barcelona", new ArrayList<>());
-        Team  manchester_city = new Team("Manchester City", new ArrayList<>());
+        Team barcelona = new Team("FC Barcelona", new ArrayList<>());
+        Team city = new Team("Manchester City", new ArrayList<>());
+        Team real = new Team("Real Madrid", new ArrayList<>());
+        Team liverpool = new Team("FC Liverpool", new ArrayList<>());
 
-        Player player1 = new Player("Harry Potter", 45, real_madrid);
-        Player player2 = new Player("Arnold Schwarzneger", 20, barcelona);
-        Player player3 = new Player("Free Willi", 70, manchester_city);
+        Player player1 = new Player("Toni Kroos", 31, real);
+        Player player2 = new Player("Marcelo", 33, real);
+        Player player3 = new Player("Mohamed Salah", 29, liverpool);
+        Player player4 = new Player("Sadio Mane", 29, liverpool);
+        Player player5 = new Player("Lionel Messi", 33, barcelona);
+        Player player6 = new Player("Sergio Aguero", 33, city);
 
-        real_madrid.addPlayer(player1);
-        barcelona.addPlayer(player2);
-        manchester_city.addPlayer(player3);
+        real.addPlayer(player1);
+        real.addPlayer(player2);
+        liverpool.addPlayer(player3);
+        liverpool.addPlayer(player4);
+        barcelona.addPlayer(player5);
+        city.addPlayer(player6);
 
-        Trainer trainer1 = new Trainer("Jürgen Klopp", barcelona);
-        Trainer trainer2 = new Trainer("Calvin Klein", manchester_city);
-        Trainer trainer3 = new Trainer("Gusto", real_madrid);
+        Trainer trainer1 = new Trainer("Ronald Koeman", barcelona);
+        Trainer trainer2 = new Trainer("Pep Guardiola", city);
+        Trainer trainer3 = new Trainer("Zinedine Zidane", real);
+        Trainer trainer4 = new Trainer("Jürgen Klopp", liverpool);
 
-        real_madrid.setTrainer(trainer3);
         barcelona.setTrainer(trainer1);
-        manchester_city.setTrainer(trainer2);
+        city.setTrainer(trainer2);
+        real.setTrainer(trainer3);
+        liverpool.setTrainer(trainer4);
 
 
         HibernateSupport.beginTransaction();
-        real_madrid.saveToDB();
         barcelona.saveToDB();
-        manchester_city.saveToDB();
+        city.saveToDB();
+        real.saveToDB();
+        liverpool.saveToDB();
         HibernateSupport.commitTransaction();
 
         HibernateSupport.beginTransaction();
         player1.saveToDB();
         player2.saveToDB();
         player3.saveToDB();
+        player4.saveToDB();
+        player5.saveToDB();
+        player6.saveToDB();
         HibernateSupport.commitTransaction();
 
         HibernateSupport.beginTransaction();
         trainer1.saveToDB();
         trainer2.saveToDB();
+        trainer3.saveToDB();
         trainer3.saveToDB();
         HibernateSupport.commitTransaction();
 
