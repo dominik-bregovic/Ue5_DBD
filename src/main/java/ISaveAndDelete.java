@@ -1,6 +1,6 @@
 public interface ISaveAndDelete {
 
-    public boolean saveToDB();
+    boolean saveToDB();
 
-    public void deleteFromDB();
+    void deleteFromDB();
 }
